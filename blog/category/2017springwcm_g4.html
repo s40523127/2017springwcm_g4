@@ -276,8 +276,57 @@ init_mathjax();
         <div class="col-sm-9">
 
             <article>
+                <h2><a href="../zai-ubuntu-1604-huan-jing-xia-qi-dong-stunnel-yu-fossil-scm.html">在Ubuntu 16.04 環境下啟動 Stunnel 與 Fossil SCM</a></h2>
+                <div class="summary"><p>練習如何在 Ubuntu 操作系統中, 安裝並設定 Stunnel 後與 Fossil SCM server 結合啟動。</p>
+<p>首先，開啟終端機(terminal)。</p>
+<p>開始安裝Stunnel 與 Fossil SCM：</p>
+<p>sudo apt update</p>
+<p>sudo apt install stunnel4 -y</p>
+<p>sudo apt install fossil</p>
+<p>輸入完畢後，接下來需要更改某些資料夾目錄中的環境變數及做開機啟動設定。</p>
+<p>sudo vi /etc/environment</p>
+<p>其中vi代表進入目錄並更改或設定其內容。</p>
+<p>進入後按下o，即進入編寫模式及換到下一行，輸入：</p>
+<p>HTTPS=on</p>
+<p>接著按下esc鍵，輸入:wq，其中w代表編寫(write)、 q代表離開(quit)。</p>
+<p>sudo vi ...</p>
+                    <a class="btn btn-default btn-xs" href="../zai-ubuntu-1604-huan-jing-xia-qi-dong-stunnel-yu-fossil-scm.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="../zai-ubuntu1604zhong-an-zhuang-nginxji-she-ding-wang-lu.html">在Ubuntu16.04中安裝nginx及設定網路</a></h2>
+                <div class="summary"><p>上一步驟完成安裝Ubuntu後，再來需要把網路設定好，才能上網。</p>
+<p>點擊齒輪後選擇網路，再選擇右下角的選項，將自己的網路IP等資料輸入後，按下儲存，即可利用瀏覽器上網。</p>
+<p>接著練習的是安裝nginx軟件。</p>
+<p>開啟終端機(terminal)後，輸入：</p>
+<p>sudo apt install nginx</p>
+<p>service nginx start</p>
+<p>輸入密碼後再從瀏覽器網址輸入http ://localhost/就會出現wellcome to nginx的字樣。</p>
+<p>也可以觀看練習影片：</p>
+<iframe src="https://player.vimeo.com/video/215014968" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<p><a href="https://vimeo.com/215014968">在Ubuntu16.04中安裝nginx及設定網路</a> from <a href="https://vimeo.com/user58922015">張皓然</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+                    <a class="btn btn-default btn-xs" href="../zai-ubuntu1604zhong-an-zhuang-nginxji-she-ding-wang-lu.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
                 <h2><a href="../zai-xu-ni-ji-zhong-an-zhuang-ubuntu.html">在虛擬機中安裝UBUNTU</a></h2>
-                <div class="summary">
+                <div class="summary"><p>此步驟將練習如何安裝VirtualBox後，啟動虛擬主機並在其內安裝Ubuntu。 首先須準備VirtualBox主程式及Ubuntu安裝映像檔(此處使用桌面版)。 在VirtualBox新增虛擬主機後，必須設定一些需求才能開始啟動，包含了：</p>
+<p>1.自訂系統名稱</p>
+<p>2.類型選擇Linux</p>
+<p>3.版本選擇Ubuntu64-bit</p>
+<p>4.記憶體大小設定(依照本機來判斷給予多少記憶體)</p>
+<p>5.硬碟選擇立即建立虛擬硬碟</p>
+<p>6.設定虛擬機要存放的位置、給予虛擬硬碟多少容量(建議10GB以上最好是20GB)</p>
+<p>7.硬碟類型選擇VHD(虛擬硬碟)，設定好之後即可建立一個虛擬主機(或稱虛擬電腦)。</p>
+<p>在建立完成後，需要設定之後內部要使用的網路，不然就沒有網路啦！ 點選左上角的設定值→網路，附加選擇的是橋接介面卡，而MAC位址需判斷自身網路狀況輸入，因為我用的是學校宿舍網路，打上網路的實體位址。完成後點下OK鈕。</p>
+<p>接下來就可以按下啟動鍵了！啟動後虛擬機會顯示選取啟動的磁碟，這時候拿出一開始準備的Ubuntu，瀏覽選擇後按下啟動，就能在使用Ubuntu的系統下開啟VirtualBox虛擬主機。 接著在設定密碼及安裝一些軟件後，就已經成功安裝完成。</p>
+<p>也可以觀看練習過程影片：</p>
+<iframe src="https://player.vimeo.com/video/215004584" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<p><a href="https://vimeo.com/215004584">bandicam 2017-04-27 19-52-41-095</a> from <a href="https://vimeo.com/user58922015">張皓然 ...</a></p>
                     <a class="btn btn-default btn-xs" href="../zai-xu-ni-ji-zhong-an-zhuang-ubuntu.html">more ...</a>
                 </div>
             </article>
@@ -292,6 +341,16 @@ init_mathjax();
 
             <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                 <ul class="list-group" id="recentposts">
+                    <li class="list-group-item">
+                        <a href="../zai-ubuntu-1604-huan-jing-xia-qi-dong-stunnel-yu-fossil-scm.html">
+                            在Ubuntu 16.04 環境下啟動 Stunnel 與 Fossil SCM
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="../zai-ubuntu1604zhong-an-zhuang-nginxji-she-ding-wang-lu.html">
+                            在Ubuntu16.04中安裝nginx及設定網路
+                        </a>
+                    </li>
                     <li class="list-group-item">
                         <a href="../zai-xu-ni-ji-zhong-an-zhuang-ubuntu.html">
                             在虛擬機中安裝UBUNTU

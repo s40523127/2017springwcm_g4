@@ -1,2 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>2016Fall 計算機程式課程網誌 (虎尾科大MDE)</title><link href="./" rel="alternate"></link><link href="./feeds/2017springwcm_g4.atom.xml" rel="self"></link><id>./</id><updated>2017-04-27T12:00:00+08:00</updated><entry><title>在虛擬機中安裝UBUNTU</title><link href="./zai-xu-ni-ji-zhong-an-zhuang-ubuntu.html" rel="alternate"></link><published>2017-04-27T12:00:00+08:00</published><updated>2017-04-27T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:,2017-04-27:./zai-xu-ni-ji-zhong-an-zhuang-ubuntu.html</id><summary type="html"></summary><category term="Brython"></category></entry></feed>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>2016Fall 計算機程式課程網誌 (虎尾科大MDE)</title><link href="./" rel="alternate"></link><link href="./feeds/2017springwcm_g4.atom.xml" rel="self"></link><id>./</id><updated>2017-04-27T12:00:00+08:00</updated><entry><title>在Ubuntu 16.04 環境下啟動 Stunnel 與 Fossil SCM</title><link href="./zai-ubuntu-1604-huan-jing-xia-qi-dong-stunnel-yu-fossil-scm.html" rel="alternate"></link><published>2017-04-27T12:00:00+08:00</published><updated>2017-04-27T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:,2017-04-27:./zai-ubuntu-1604-huan-jing-xia-qi-dong-stunnel-yu-fossil-scm.html</id><summary type="html">&lt;p&gt;練習如何在 Ubuntu 操作系統中, 安裝並設定 Stunnel 後與 Fossil SCM server 結合啟動。&lt;/p&gt;
+&lt;p&gt;首先，開啟終端機(terminal)。&lt;/p&gt;
+&lt;p&gt;開始安裝Stunnel 與 Fossil SCM：&lt;/p&gt;
+&lt;p&gt;sudo apt update&lt;/p&gt;
+&lt;p&gt;sudo apt install stunnel4 -y&lt;/p&gt;
+&lt;p&gt;sudo apt install fossil&lt;/p&gt;
+&lt;p&gt;輸入完畢後，接下來需要更改某些資料夾目錄中的環境變數及做開機啟動設定。&lt;/p&gt;
+&lt;p&gt;sudo vi /etc/environment&lt;/p&gt;
+&lt;p&gt;其中vi代表進入目錄並更改或設定其內容。&lt;/p&gt;
+&lt;p&gt;進入後按下o，即進入編寫模式及換到下一行，輸入：&lt;/p&gt;
+&lt;p&gt;HTTPS=on&lt;/p&gt;
+&lt;p&gt;接著按下esc鍵，輸入:wq，其中w代表編寫(write)、 q代表離開(quit)。&lt;/p&gt;
+&lt;p&gt;sudo vi /etc/default/stunnel4&lt;/p&gt;
+&lt;p&gt;進入後將ENABLED=0中的"0"改為"1"。&lt;/p&gt;
+&lt;p&gt;到這裡即完成環境變數以及開機啟動設定。&lt;/p&gt;
+&lt;p&gt;最後我們要設定Stunnel 並執行 fossil http 指令，然後在特定目錄中建立兩個檔案。&lt;/p&gt;
+&lt;p&gt;分別是localhost.key 與 localhost.crt&lt;/p&gt;
+&lt;p&gt;首先，更換目錄：&lt;/p&gt;
+&lt;p&gt;cd /etc/stunnel/&lt;/p&gt;
+&lt;p&gt;進入目錄後，即可編輯並建立這兩個我們所需的檔案：&lt;/p&gt;
+&lt;p&gt;ls -s&lt;/p&gt;
+&lt;p&gt;sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt&lt;/p&gt;
+&lt;p&gt;sudo vi /etc/stunnel/stunnel.conf&lt;/p&gt;
+&lt;p&gt;進入後，將下列資料輸入：&lt;/p&gt;
+&lt;p&gt;[https] accept = 此電腦的IPv4ip:443 accept = :::443(此為IPv6，若無需使用可直接跳過不打) cert = /etc/stunnel/localhost.crt key = /etc/stunnel/localhost.key exec = /usr/bin/fossil execargs = /usr/bin/fossil http /home/user/repository/自己的小組.fossil -- https --nojail&lt;/p&gt;
+&lt;p&gt;其中 --nojail 目的在 drop the root privilege but do not enter the chroot jail&lt;/p&gt;
+&lt;p&gt;最後輸入sudo /etc/init.d/stunnel4 restart後，重新開機虛擬機即可以https: //yourip 連結至 mde2a1.fossil 網際管理介面&lt;/p&gt;</summary><category term="Brython"></category></entry><entry><title>在Ubuntu16.04中安裝nginx及設定網路</title><link href="./zai-ubuntu1604zhong-an-zhuang-nginxji-she-ding-wang-lu.html" rel="alternate"></link><published>2017-04-26T12:00:00+08:00</published><updated>2017-04-26T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:,2017-04-26:./zai-ubuntu1604zhong-an-zhuang-nginxji-she-ding-wang-lu.html</id><summary type="html">&lt;p&gt;上一步驟完成安裝Ubuntu後，再來需要把網路設定好，才能上網。&lt;/p&gt;
+&lt;p&gt;點擊齒輪後選擇網路，再選擇右下角的選項，將自己的網路IP等資料輸入後，按下儲存，即可利用瀏覽器上網。&lt;/p&gt;
+&lt;p&gt;接著練習的是安裝nginx軟件。&lt;/p&gt;
+&lt;p&gt;開啟終端機(terminal)後，輸入：&lt;/p&gt;
+&lt;p&gt;sudo apt install nginx&lt;/p&gt;
+&lt;p&gt;service nginx start&lt;/p&gt;
+&lt;p&gt;輸入密碼後再從瀏覽器網址輸入http ://localhost/就會出現wellcome to nginx的字樣。&lt;/p&gt;
+&lt;p&gt;也可以觀看練習影片：&lt;/p&gt;
+&lt;iframe src="https://player.vimeo.com/video/215014968" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;a href="https://vimeo.com/215014968"&gt;在Ubuntu16.04中安裝nginx及設定網路&lt;/a&gt; from &lt;a href="https://vimeo.com/user58922015"&gt;張皓然&lt;/a&gt; on &lt;a href="https://vimeo.com"&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;</summary><category term="Brython"></category></entry><entry><title>在虛擬機中安裝UBUNTU</title><link href="./zai-xu-ni-ji-zhong-an-zhuang-ubuntu.html" rel="alternate"></link><published>2017-04-25T12:00:00+08:00</published><updated>2017-04-25T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:,2017-04-25:./zai-xu-ni-ji-zhong-an-zhuang-ubuntu.html</id><summary type="html">&lt;p&gt;此步驟將練習如何安裝VirtualBox後，啟動虛擬主機並在其內安裝Ubuntu。 首先須準備VirtualBox主程式及Ubuntu安裝映像檔(此處使用桌面版)。 在VirtualBox新增虛擬主機後，必須設定一些需求才能開始啟動，包含了：&lt;/p&gt;
+&lt;p&gt;1.自訂系統名稱&lt;/p&gt;
+&lt;p&gt;2.類型選擇Linux&lt;/p&gt;
+&lt;p&gt;3.版本選擇Ubuntu64-bit&lt;/p&gt;
+&lt;p&gt;4.記憶體大小設定(依照本機來判斷給予多少記憶體)&lt;/p&gt;
+&lt;p&gt;5.硬碟選擇立即建立虛擬硬碟&lt;/p&gt;
+&lt;p&gt;6.設定虛擬機要存放的位置、給予虛擬硬碟多少容量(建議10GB以上最好是20GB)&lt;/p&gt;
+&lt;p&gt;7.硬碟類型選擇VHD(虛擬硬碟)，設定好之後即可建立一個虛擬主機(或稱虛擬電腦)。&lt;/p&gt;
+&lt;p&gt;在建立完成後，需要設定之後內部要使用的網路，不然就沒有網路啦！ 點選左上角的設定值→網路，附加選擇的是橋接介面卡，而MAC位址需判斷自身網路狀況輸入，因為我用的是學校宿舍網路，打上網路的實體位址。完成後點下OK鈕。&lt;/p&gt;
+&lt;p&gt;接下來就可以按下啟動鍵了！啟動後虛擬機會顯示選取啟動的磁碟，這時候拿出一開始準備的Ubuntu，瀏覽選擇後按下啟動，就能在使用Ubuntu的系統下開啟VirtualBox虛擬主機。 接著在設定密碼及安裝一些軟件後，就已經成功安裝完成。&lt;/p&gt;
+&lt;p&gt;也可以觀看練習過程影片：&lt;/p&gt;
+&lt;iframe src="https://player.vimeo.com/video/215004584" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;a href="https://vimeo.com/215004584"&gt;bandicam 2017-04-27 19-52-41-095&lt;/a&gt; from &lt;a href="https://vimeo.com/user58922015"&gt;張皓然&lt;/a&gt; on &lt;a href="https://vimeo.com"&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;</summary><category term="Brython"></category></entry></feed>

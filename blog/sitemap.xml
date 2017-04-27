@@ -5,35 +5,49 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>./</loc>
-<lastmod>2017-04-27T14:38:47-00:00</lastmod>
+<lastmod>2017-04-27T21:39:09-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>./archives.html</loc>
-<lastmod>2017-04-27T14:38:47-00:00</lastmod>
+<lastmod>2017-04-27T21:39:09-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>./tags.html</loc>
-<lastmod>2017-04-27T14:38:47-00:00</lastmod>
+<lastmod>2017-04-27T21:39:09-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>./categories.html</loc>
-<lastmod>2017-04-27T14:38:47-00:00</lastmod>
+<lastmod>2017-04-27T21:39:09-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>./zai-xu-ni-ji-zhong-an-zhuang-ubuntu.html</loc>
+<loc>./zai-ubuntu-1604-huan-jing-xia-qi-dong-stunnel-yu-fossil-scm.html</loc>
 <lastmod>2017-04-27T12:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>./zai-ubuntu1604zhong-an-zhuang-nginxji-she-ding-wang-lu.html</loc>
+<lastmod>2017-04-26T12:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>./zai-xu-ni-ji-zhong-an-zhuang-ubuntu.html</loc>
+<lastmod>2017-04-25T12:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>

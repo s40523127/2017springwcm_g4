@@ -5,29 +5,50 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>./</loc>
-<lastmod>2017-06-23T10:53:20-00:00</lastmod>
+<lastmod>2017-06-28T11:41:17-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>./archives.html</loc>
-<lastmod>2017-06-23T10:53:20-00:00</lastmod>
+<lastmod>2017-06-28T11:41:17-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>./tags.html</loc>
-<lastmod>2017-06-23T10:53:20-00:00</lastmod>
+<lastmod>2017-06-28T11:41:17-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>./categories.html</loc>
-<lastmod>2017-06-23T10:53:20-00:00</lastmod>
+<lastmod>2017-06-28T11:41:17-00:00</lastmod>
 <changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>./wang-lu-xian-zhi-zuo-yi-ji-pei-zhi.html</loc>
+<lastmod>2017-06-28T12:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>./fossil-scmde-tui-song.html</loc>
+<lastmod>2017-06-27T12:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>./ipv6huan-jing-she-ding.html</loc>
+<lastmod>2017-06-26T12:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
@@ -54,21 +75,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>./category/2017springwcm_g4.html</loc>
-<lastmod>2017-04-27T12:00:00+08:06</lastmod>
+<lastmod>2017-06-28T12:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>./tag/brython.html</loc>
-<lastmod>2017-04-27T12:00:00+08:06</lastmod>
+<lastmod>2017-06-28T12:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>./author/kay.html</loc>
-<lastmod>2017-04-27T12:00:00+08:06</lastmod>
+<lastmod>2017-06-28T12:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

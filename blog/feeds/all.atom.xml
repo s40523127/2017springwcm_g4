@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>2016Fall 計算機程式課程網誌 (虎尾科大MDE)</title><link href="./" rel="alternate"></link><link href="./feeds/all.atom.xml" rel="self"></link><id>./</id><updated>2017-04-27T12:00:00+08:00</updated><entry><title>在Ubuntu 16.04 環境下啟動 Stunnel 與 Fossil SCM</title><link href="./zai-ubuntu-1604-huan-jing-xia-qi-dong-stunnel-yu-fossil-scm.html" rel="alternate"></link><published>2017-04-27T12:00:00+08:00</published><updated>2017-04-27T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:,2017-04-27:./zai-ubuntu-1604-huan-jing-xia-qi-dong-stunnel-yu-fossil-scm.html</id><summary type="html">&lt;p&gt;練習如何在 Ubuntu 操作系統中, 安裝並設定 Stunnel 後與 Fossil SCM server 結合啟動。&lt;/p&gt;
-&lt;p&gt;首先，開啟終端機(terminal)。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>2017Spring WCM (虎尾科大MDE)</title><link href="./" rel="alternate"></link><link href="./feeds/all.atom.xml" rel="self"></link><id>./</id><updated>2017-06-28T12:00:00+08:00</updated><entry><title>網路線製作以及配置</title><link href="./wang-lu-xian-zhi-zuo-yi-ji-pei-zhi.html" rel="alternate"></link><published>2017-06-28T12:00:00+08:00</published><updated>2017-06-28T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:,2017-06-28:./wang-lu-xian-zhi-zuo-yi-ji-pei-zhi.html</id><summary type="html">&lt;h1&gt;網路線製作過程&lt;/h1&gt;
+&lt;h2&gt;剪下所需長度的線--&amp;gt;用美工刀剝線--&amp;gt;整線--&amp;gt;將線排列成568A或568B--&amp;gt;裝上接頭(最容易出錯)--&amp;gt;壓接--&amp;gt;測試--&amp;gt;完成&lt;/h2&gt;
+&lt;h2&gt;568a:白綠、綠、白橙、藍、白藍、橙、白棕、棕&lt;/h2&gt;
+&lt;h2&gt;568b:白橙、橙、白綠、藍、白藍、綠、白棕、棕&lt;/h2&gt;
+&lt;h2&gt;網路線:568a+568a or 568b+568b&lt;/h2&gt;
+&lt;h2&gt;跳線:568a+568b or 568b+568a&lt;/h2&gt;</summary><category term="Brython"></category></entry><entry><title>Fossil SCM的推送</title><link href="./fossil-scmde-tui-song.html" rel="alternate"></link><published>2017-06-27T12:00:00+08:00</published><updated>2017-06-27T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:,2017-06-27:./fossil-scmde-tui-song.html</id><summary type="html">&lt;p&gt;利用 Fossil SCM 管理 mp4 影片檔案的步驟
+1.fossil clone https://帳號@網址 ................. 下載網站內容並附加帳號資訊 
+2.打密碼並記住密碼
+3.mkdir 資料夾名................. 創一個新資料夾
+4.cd 資料夾名................. 進入資料夾
+5.fossil open ./../fossil檔 ................. 開啟上一個資料夾的fossil檔
+6.將要上傳的東西複製進新創的資料夾
+7.fossil add .................. 加入所有改變
+8.fossil commit -m "留言" ................. 提交並附帶留言&lt;/p&gt;</summary><category term="Brython"></category></entry><entry><title>IPv6環境設定</title><link href="./ipv6huan-jing-she-ding.html" rel="alternate"></link><published>2017-06-26T12:00:00+08:00</published><updated>2017-06-26T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:,2017-06-26:./ipv6huan-jing-she-ding.html</id><summary type="html">&lt;h1&gt;設定Ipv6環境&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;開啟網路介面卡--&amp;gt;進入內容--&amp;gt;開啟Ipv6--&amp;gt;點選Ipv6內容--&amp;gt;輸入DNS伺服器位置&lt;/li&gt;
+&lt;li&gt;慣用DNS: [2001:288:6004:1:2] (本校)&lt;/li&gt;
+&lt;li&gt;其他DNS:[2001:b000:168:1] (中華電信)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Ipv6 的 Proxy 設定&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;address: [2001:288:6004:17::17] &lt;/li&gt;
+&lt;li&gt;Port: 3128&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="Brython"></category></entry><entry><title>在Ubuntu 16.04 環境下啟動 Stunnel 與 Fossil SCM</title><link href="./zai-ubuntu-1604-huan-jing-xia-qi-dong-stunnel-yu-fossil-scm.html" rel="alternate"></link><published>2017-04-27T12:00:00+08:00</published><updated>2017-04-27T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:,2017-04-27:./zai-ubuntu-1604-huan-jing-xia-qi-dong-stunnel-yu-fossil-scm.html</id><summary type="html">&lt;p&gt;練習如何在 Ubuntu 操作系統中, 安裝並設定 Stunnel 後與 Fossil SCM server 結合啟動。&lt;/p&gt;
+&lt;p&gt;首先，開啟終端機(terminal)&lt;/p&gt;
 &lt;p&gt;開始安裝Stunnel 與 Fossil SCM：&lt;/p&gt;
 &lt;p&gt;sudo apt update&lt;/p&gt;
 &lt;p&gt;sudo apt install stunnel4 -y&lt;/p&gt;
@@ -27,7 +50,7 @@
 &lt;p&gt;其中 --nojail 目的在 drop the root privilege but do not enter the chroot jail&lt;/p&gt;
 &lt;p&gt;最後輸入sudo /etc/init.d/stunnel4 restart後，重新開機虛擬機即可以https: //yourip 連結至 mde2a1.fossil 網際管理介面&lt;/p&gt;</summary><category term="Brython"></category></entry><entry><title>在Ubuntu16.04中安裝nginx及設定網路</title><link href="./zai-ubuntu1604zhong-an-zhuang-nginxji-she-ding-wang-lu.html" rel="alternate"></link><published>2017-04-26T12:00:00+08:00</published><updated>2017-04-26T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:,2017-04-26:./zai-ubuntu1604zhong-an-zhuang-nginxji-she-ding-wang-lu.html</id><summary type="html">&lt;p&gt;上一步驟完成安裝Ubuntu後，再來需要把網路設定好，才能上網。&lt;/p&gt;
 &lt;p&gt;點擊齒輪後選擇網路，再選擇右下角的選項，將自己的網路IP等資料輸入後，按下儲存，即可利用瀏覽器上網。&lt;/p&gt;
-&lt;p&gt;接著練習的是安裝nginx軟件。&lt;/p&gt;
+&lt;p&gt;接著練習的是安裝nginx軟件&lt;/p&gt;
 &lt;p&gt;開啟終端機(terminal)後，輸入：&lt;/p&gt;
 &lt;p&gt;sudo apt install nginx&lt;/p&gt;
 &lt;p&gt;service nginx start&lt;/p&gt;
@@ -35,7 +58,7 @@
 &lt;p&gt;也可以觀看練習影片：&lt;/p&gt;
 &lt;iframe src="https://player.vimeo.com/video/215014968" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
 
-&lt;p&gt;&lt;a href="https://vimeo.com/215014968"&gt;在Ubuntu16.04中安裝nginx及設定網路&lt;/a&gt; from &lt;a href="https://vimeo.com/user58922015"&gt;張皓然&lt;/a&gt; on &lt;a href="https://vimeo.com"&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;</summary><category term="Brython"></category></entry><entry><title>在虛擬機中安裝UBUNTU</title><link href="./zai-xu-ni-ji-zhong-an-zhuang-ubuntu.html" rel="alternate"></link><published>2017-04-25T12:00:00+08:00</published><updated>2017-04-25T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:,2017-04-25:./zai-xu-ni-ji-zhong-an-zhuang-ubuntu.html</id><summary type="html">&lt;p&gt;此步驟將練習如何安裝VirtualBox後，啟動虛擬主機並在其內安裝Ubuntu。 首先須準備VirtualBox主程式及Ubuntu安裝映像檔(此處使用桌面版)。 在VirtualBox新增虛擬主機後，必須設定一些需求才能開始啟動，包含了：&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://vimeo.com/215014968"&gt;在Ubuntu16.04中安裝nginx及設定網路&lt;/a&gt; from &lt;a href="https://vimeo.com/user58922015"&gt;張皓然&lt;/a&gt; on &lt;a href="https://vimeo.com"&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;</summary><category term="Brython"></category></entry><entry><title>在虛擬機中安裝UBUNTU</title><link href="./zai-xu-ni-ji-zhong-an-zhuang-ubuntu.html" rel="alternate"></link><published>2017-04-25T12:00:00+08:00</published><updated>2017-04-25T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:,2017-04-25:./zai-xu-ni-ji-zhong-an-zhuang-ubuntu.html</id><summary type="html">&lt;p&gt;此步驟將練習如何安裝VirtualBox後，啟動虛擬主機並在其內安裝Ubuntu。 首先須準備VirtualBox主程式及Ubuntu安裝映像檔(此處使用桌面版)。 在VirtualBox新增虛擬主機後，必須設定一些需求才能開始啟動，包含了:&lt;/p&gt;
 &lt;p&gt;1.自訂系統名稱&lt;/p&gt;
 &lt;p&gt;2.類型選擇Linux&lt;/p&gt;
 &lt;p&gt;3.版本選擇Ubuntu64-bit&lt;/p&gt;

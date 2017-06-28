@@ -2,7 +2,7 @@
 <html lang="en"
 >
 <head>
-    <title>2017springwcm_g4 - 2016Fall 計算機程式課程網誌 (虎尾科大MDE)</title>
+    <title>2017springwcm_g4 - 2017Spring WCM (虎尾科大MDE)</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -167,15 +167,15 @@ init_mathjax();
 </script>
 
 
-    <meta name="author" content="KMOL" />
+    <meta name="author" content="KAY" />
     <meta name="keywords" content="2017springwcm_g4" />
 
     <!-- Open Graph tags -->
-        <meta property="og:site_name" content="2016Fall 計算機程式課程網誌 (虎尾科大MDE)" />
+        <meta property="og:site_name" content="2017Spring WCM (虎尾科大MDE)" />
         <meta property="og:type" content="website"/>
-        <meta property="og:title" content="2016Fall 計算機程式課程網誌 (虎尾科大MDE)"/>
+        <meta property="og:title" content="2017Spring WCM (虎尾科大MDE)"/>
         <meta property="og:url" content=".."/>
-        <meta property="og:description" content="2016Fall 計算機程式課程網誌 (虎尾科大MDE)"/>
+        <meta property="og:description" content="2017Spring WCM (虎尾科大MDE)"/>
 
 
     <!-- Bootstrap -->
@@ -187,7 +187,7 @@ init_mathjax();
     <link rel="stylesheet" href="../theme/css/style.css" type="text/css"/>
 
         <link href="../feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
-              title="2016Fall 計算機程式課程網誌 (虎尾科大MDE) ATOM Feed"/>
+              title="2017Spring WCM (虎尾科大MDE) ATOM Feed"/>
 
 <script type="text/javascript" src="https://coursemdetw.github.io/project_site_files/files/syntaxhighlighter/shCore.js"></script>
 <script type="text/javascript" src="https://coursemdetw.github.io/project_site_files/files/syntaxhighlighter/shBrushJScript.js"></script>
@@ -249,7 +249,7 @@ init_mathjax();
                 <span class="icon-bar"></span>
             </button>
             <a href="../" class="navbar-brand">
-2016Fall 計算機程式課程網誌 (虎尾科大MDE)            </a>
+2017Spring WCM (虎尾科大MDE)            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
@@ -276,9 +276,53 @@ init_mathjax();
         <div class="col-sm-9">
 
             <article>
+                <h2><a href="../wang-lu-xian-zhi-zuo-yi-ji-pei-zhi.html">網路線製作以及配置</a></h2>
+                <div class="summary"><h1>網路線製作過程</h1>
+<h2>剪下所需長度的線--&gt;用美工刀剝線--&gt;整線--&gt;將線排列成568A或568B--&gt;裝上接頭(最容易出錯)--&gt;壓接--&gt;測試--&gt;完成</h2>
+<h2>568a:白綠、綠、白橙、藍、白藍、橙、白棕、棕</h2>
+<h2>568b:白橙、橙、白綠、藍、白藍、綠、白棕、棕</h2>
+<h2>網路線:568a+568a or 568b+568b</h2>
+<h2>跳線:568a+568b or 568b+568a</h2>
+                    <a class="btn btn-default btn-xs" href="../wang-lu-xian-zhi-zuo-yi-ji-pei-zhi.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="../fossil-scmde-tui-song.html">Fossil SCM的推送</a></h2>
+                <div class="summary"><p>利用 Fossil SCM 管理 mp4 影片檔案的步驟
+1.fossil clone https://帳號@網址 ................. 下載網站內容並附加帳號資訊 
+2.打密碼並記住密碼
+3.mkdir 資料夾名................. 創一個新資料夾
+4.cd 資料夾名................. 進入資料夾
+5.fossil open ./../fossil檔 ................. 開啟上一個資料夾的fossil檔
+6.將要上傳的東西複製進新創的資料夾
+7.fossil add .................. 加入所有改變
+8.fossil commit -m "留言" ................. 提交並附帶留言</p>
+                    <a class="btn btn-default btn-xs" href="../fossil-scmde-tui-song.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="../ipv6huan-jing-she-ding.html">IPv6環境設定</a></h2>
+                <div class="summary"><h1>設定Ipv6環境</h1>
+<ul>
+<li>開啟網路介面卡--&gt;進入內容--&gt;開啟Ipv6--&gt;點選Ipv6內容--&gt;輸入DNS伺服器位置</li>
+<li>慣用DNS: [2001:288:6004:1:2] (本校)</li>
+<li>其他DNS:[2001:b000:168:1] (中華電信)</li>
+</ul>
+<h1>Ipv6 的 Proxy 設定</h1>
+<ul>
+<li>address: [2001:288:6004:17::17] </li>
+<li>Port: 3128</li>
+</ul>
+                    <a class="btn btn-default btn-xs" href="../ipv6huan-jing-she-ding.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
                 <h2><a href="../zai-ubuntu-1604-huan-jing-xia-qi-dong-stunnel-yu-fossil-scm.html">在Ubuntu 16.04 環境下啟動 Stunnel 與 Fossil SCM</a></h2>
                 <div class="summary"><p>練習如何在 Ubuntu 操作系統中, 安裝並設定 Stunnel 後與 Fossil SCM server 結合啟動。</p>
-<p>首先，開啟終端機(terminal)。</p>
+<p>首先，開啟終端機(terminal)</p>
 <p>開始安裝Stunnel 與 Fossil SCM：</p>
 <p>sudo apt update</p>
 <p>sudo apt install stunnel4 -y</p>
@@ -298,7 +342,7 @@ init_mathjax();
                 <h2><a href="../zai-ubuntu1604zhong-an-zhuang-nginxji-she-ding-wang-lu.html">在Ubuntu16.04中安裝nginx及設定網路</a></h2>
                 <div class="summary"><p>上一步驟完成安裝Ubuntu後，再來需要把網路設定好，才能上網。</p>
 <p>點擊齒輪後選擇網路，再選擇右下角的選項，將自己的網路IP等資料輸入後，按下儲存，即可利用瀏覽器上網。</p>
-<p>接著練習的是安裝nginx軟件。</p>
+<p>接著練習的是安裝nginx軟件</p>
 <p>開啟終端機(terminal)後，輸入：</p>
 <p>sudo apt install nginx</p>
 <p>service nginx start</p>
@@ -313,7 +357,7 @@ init_mathjax();
             <hr/>
             <article>
                 <h2><a href="../zai-xu-ni-ji-zhong-an-zhuang-ubuntu.html">在虛擬機中安裝UBUNTU</a></h2>
-                <div class="summary"><p>此步驟將練習如何安裝VirtualBox後，啟動虛擬主機並在其內安裝Ubuntu。 首先須準備VirtualBox主程式及Ubuntu安裝映像檔(此處使用桌面版)。 在VirtualBox新增虛擬主機後，必須設定一些需求才能開始啟動，包含了：</p>
+                <div class="summary"><p>此步驟將練習如何安裝VirtualBox後，啟動虛擬主機並在其內安裝Ubuntu。 首先須準備VirtualBox主程式及Ubuntu安裝映像檔(此處使用桌面版)。 在VirtualBox新增虛擬主機後，必須設定一些需求才能開始啟動，包含了:</p>
 <p>1.自訂系統名稱</p>
 <p>2.類型選擇Linux</p>
 <p>3.版本選擇Ubuntu64-bit</p>
@@ -342,6 +386,21 @@ init_mathjax();
             <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                 <ul class="list-group" id="recentposts">
                     <li class="list-group-item">
+                        <a href="../wang-lu-xian-zhi-zuo-yi-ji-pei-zhi.html">
+                            網路線製作以及配置
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="../fossil-scmde-tui-song.html">
+                            Fossil SCM的推送
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="../ipv6huan-jing-she-ding.html">
+                            IPv6環境設定
+                        </a>
+                    </li>
+                    <li class="list-group-item">
                         <a href="../zai-ubuntu-1604-huan-jing-xia-qi-dong-stunnel-yu-fossil-scm.html">
                             在Ubuntu 16.04 環境下啟動 Stunnel 與 Fossil SCM
                         </a>
@@ -349,11 +408,6 @@ init_mathjax();
                     <li class="list-group-item">
                         <a href="../zai-ubuntu1604zhong-an-zhuang-nginxji-she-ding-wang-lu.html">
                             在Ubuntu16.04中安裝nginx及設定網路
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="../zai-xu-ni-ji-zhong-an-zhuang-ubuntu.html">
-                            在虛擬機中安裝UBUNTU
                         </a>
                     </li>
                 </ul>
@@ -407,7 +461,7 @@ init_mathjax();
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2017 KMOL
+         <div class="col-xs-10">&copy; 2017 KAY
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

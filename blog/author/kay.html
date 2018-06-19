@@ -275,13 +275,85 @@ init_mathjax();
         <div class="col-sm-9">
 
             <article>
+                <h2><a href="../chi-lun.html">齒輪</a></h2>
+                <div class="summary"><!-- 導入 Brython 標準程式庫 -->
+
+<script type="text/javascript" 
+    src="https://cdn.rawgit.com/brython-dev/brython/master/www/src/brython_dist.js">
+</script>
+
+<!-- 啟動 Brython -->
+
+<script>
+window.onload=function(){
+// 設定 data/py 為共用程式路徑
+brython({debug:1, pythonpath:['./../data/py']});
+}
+</script>
+
+<canvas id="onegear" width="800" height="600"></canvas>
+
+<div id="onegear_div" width="800" height="20"></div>
+
+<p><input id="n1" value="13"></input><br />
+<input id="n2" value="11"></input><br />
+<input id="n3" value="17"></input><br />
+<button id="button">Set Number of Gears</button></p>
+
+<script type="text/python3">
+from browser import document as doc
+from browser import html
+import math
+# deg 為角度轉為徑度的轉換因子
+deg = math.pi/180.
+# 定義 Spur 類別
+class Spur(object):
+    def __init__(self, ctx):
+        self.ctx = ctx
+
+    def create_line …</script>
+                    <a class="btn btn-default btn-xs" href="../chi-lun.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
                 <h2><a href="../wang-lu-xian-zhi-zuo-yi-ji-pei-zhi.html">網路線製作以及配置</a></h2>
-                <div class="summary"><h1>網路線製作過程</h1>
-<h2>剪下所需長度的線--&gt;用美工刀剝線--&gt;整線--&gt;將線排列成568A或568B--&gt;裝上接頭(最容易出錯)--&gt;壓接--&gt;測試--&gt;完成</h2>
-<h2>568a:白綠、綠、白橙、藍、白藍、橙、白棕、棕</h2>
-<h2>568b:白橙、橙、白綠、藍、白藍、綠、白棕、棕</h2>
-<h2>網路線:568a+568a or 568b+568b</h2>
-<h2>跳線:568a+568b or 568b+568a</h2>
+                <div class="summary"><!-- 導入 Brython 標準程式庫 -->
+
+<script type="text/javascript" 
+    src="https://cdn.rawgit.com/brython-dev/brython/master/www/src/brython_dist.js">
+</script>
+
+<!-- 啟動 Brython -->
+
+<script>
+window.onload=function(){
+// 設定 data/py 為共用程式路徑
+brython({debug:1, pythonpath:['./../data/py']});
+}
+</script>
+
+<canvas id="onegear" width="800" height="600"></canvas>
+
+<div id="onegear_div" width="800" height="20"></div>
+
+<p><input id="n1" value="13"></input><br />
+<input id="n2" value="11"></input><br />
+<input id="n3" value="17"></input><br />
+<button id="button">Set Number of Gears</button></p>
+
+<script type="text/python3">
+from browser import document as doc
+from browser import html
+import math
+# deg 為角度轉為徑度的轉換因子
+deg = math.pi/180.
+# 定義 Spur 類別
+class Spur(object):
+    def __init__(self, ctx):
+        self.ctx = ctx
+
+    def create_line …</script>
                     <a class="btn btn-default btn-xs" href="../wang-lu-xian-zhi-zuo-yi-ji-pei-zhi.html">more ...</a>
                 </div>
             </article>
@@ -329,7 +401,7 @@ init_mathjax();
 <p>進入/etc/default/stunnel4中 改ENABLED=1</p>
 <p>stunnel設定和fossil:</p>
 <p>stunnel.conf</p>
-<p>sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt ...</p>
+<p>sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt …</p>
                     <a class="btn btn-default btn-xs" href="../ubuntuzhong-qi-dong-stunnelhe-fossil.html">more ...</a>
                 </div>
             </article>
@@ -363,7 +435,7 @@ init_mathjax();
 <p>進入後按下o，即進入編寫模式及換到下一行，輸入：</p>
 <p>HTTPS=on</p>
 <p>接著按下esc鍵，輸入:wq，其中w代表編寫(write)、 q代表離開(quit)。</p>
-<p>sudo vi ...</p>
+<p>sudo vi …</p>
                     <a class="btn btn-default btn-xs" href="../zai-ubuntu-1604-huan-jing-xia-qi-dong-stunnel-yu-fossil-scm.html">more ...</a>
                 </div>
             </article>
@@ -400,7 +472,7 @@ init_mathjax();
 <p>也可以觀看練習過程影片：</p>
 <iframe src="https://player.vimeo.com/video/215004584" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-<p><a href="https://vimeo.com/215004584">bandicam 2017-04-27 19-52-41-095</a> from <a href="https://vimeo.com/user58922015">張皓然 ...</a></p>
+<p><a href="https://vimeo.com/215004584">bandicam 2017-04-27 19-52-41-095</a> from <a href="https://vimeo.com/user58922015">張皓然 …</a></p>
                     <a class="btn btn-default btn-xs" href="../zai-xu-ni-ji-zhong-an-zhuang-ubuntu.html">more ...</a>
                 </div>
             </article>
@@ -415,6 +487,11 @@ init_mathjax();
 
             <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                 <ul class="list-group" id="recentposts">
+                    <li class="list-group-item">
+                        <a href="../chi-lun.html">
+                            齒輪
+                        </a>
+                    </li>
                     <li class="list-group-item">
                         <a href="../wang-lu-xian-zhi-zuo-yi-ji-pei-zhi.html">
                             網路線製作以及配置
@@ -433,11 +510,6 @@ init_mathjax();
                     <li class="list-group-item">
                         <a href="../ubuntuzhong-qi-dong-stunnelhe-fossil.html">
                             Ubuntu中啟動stunnel和fossil
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="../dian-nao-chai-jie-yi-ji-zhong-xin-zu-zhuang-he-ti.html">
-                            電腦拆解以及重新組裝(合體)
                         </a>
                     </li>
                 </ul>
@@ -491,7 +563,7 @@ init_mathjax();
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2017 KAY
+         <div class="col-xs-10">&copy; 2018 KAY
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

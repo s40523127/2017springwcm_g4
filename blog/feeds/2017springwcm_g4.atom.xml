@@ -1,10 +1,527 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>2017Spring WCM (虎尾科大MDE)</title><link href="./" rel="alternate"></link><link href="./feeds/2017springwcm_g4.atom.xml" rel="self"></link><id>./</id><updated>2017-06-28T12:00:00+08:00</updated><entry><title>網路線製作以及配置</title><link href="./wang-lu-xian-zhi-zuo-yi-ji-pei-zhi.html" rel="alternate"></link><published>2017-06-28T12:00:00+08:00</published><updated>2017-06-28T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:,2017-06-28:./wang-lu-xian-zhi-zuo-yi-ji-pei-zhi.html</id><summary type="html">&lt;h1&gt;網路線製作過程&lt;/h1&gt;
-&lt;h2&gt;剪下所需長度的線--&amp;gt;用美工刀剝線--&amp;gt;整線--&amp;gt;將線排列成568A或568B--&amp;gt;裝上接頭(最容易出錯)--&amp;gt;壓接--&amp;gt;測試--&amp;gt;完成&lt;/h2&gt;
-&lt;h2&gt;568a:白綠、綠、白橙、藍、白藍、橙、白棕、棕&lt;/h2&gt;
-&lt;h2&gt;568b:白橙、橙、白綠、藍、白藍、綠、白棕、棕&lt;/h2&gt;
-&lt;h2&gt;網路線:568a+568a or 568b+568b&lt;/h2&gt;
-&lt;h2&gt;跳線:568a+568b or 568b+568a&lt;/h2&gt;</summary><category term="Brython"></category></entry><entry><title>Fossil SCM的推送</title><link href="./fossil-scmde-tui-song.html" rel="alternate"></link><published>2017-06-27T12:00:00+08:00</published><updated>2017-06-27T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:,2017-06-27:./fossil-scmde-tui-song.html</id><summary type="html">&lt;p&gt;利用 Fossil SCM 管理 mp4 影片檔案的步驟
+<feed xmlns="http://www.w3.org/2005/Atom"><title>2017Spring WCM (虎尾科大MDE) - 2017springwcm_g4</title><link href="./" rel="alternate"></link><link href="./feeds/2017springwcm_g4.atom.xml" rel="self"></link><id>./</id><updated>2018-06-19T12:00:00+08:00</updated><entry><title>齒輪</title><link href="./chi-lun.html" rel="alternate"></link><published>2018-06-19T12:00:00+08:00</published><updated>2018-06-19T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:None,2018-06-19:./chi-lun.html</id><summary type="html">&lt;!-- 導入 Brython 標準程式庫 --&gt;
+
+&lt;script type="text/javascript" 
+    src="https://cdn.rawgit.com/brython-dev/brython/master/www/src/brython_dist.js"&gt;
+&lt;/script&gt;
+
+&lt;!-- 啟動 Brython --&gt;
+
+&lt;script&gt;
+window.onload=function(){
+// 設定 data/py 為共用程式路徑
+brython({debug:1, pythonpath:['./../data/py']});
+}
+&lt;/script&gt;
+
+&lt;canvas id="onegear" width="800" height="600"&gt;&lt;/canvas&gt;
+
+&lt;div id="onegear_div" width="800" height="20"&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;input id="n1" value="13"&gt;&lt;/input&gt;&lt;br /&gt;
+&lt;input id="n2" value="11"&gt;&lt;/input&gt;&lt;br /&gt;
+&lt;input id="n3" value="17"&gt;&lt;/input&gt;&lt;br /&gt;
+&lt;button id="button"&gt;Set Number of Gears&lt;/button&gt;&lt;/p&gt;
+
+&lt;script type="text/python3"&gt;
+from browser import document as doc
+from browser import html
+import math
+# deg 為角度轉為徑度的轉換因子
+deg = math.pi/180.
+# 定義 Spur 類別
+class Spur(object):
+    def __init__(self, ctx):
+        self.ctx = ctx
+
+    def create_line …&lt;/script&gt;</summary><content type="html">&lt;!-- 導入 Brython 標準程式庫 --&gt;
+
+&lt;script type="text/javascript" 
+    src="https://cdn.rawgit.com/brython-dev/brython/master/www/src/brython_dist.js"&gt;
+&lt;/script&gt;
+
+&lt;!-- 啟動 Brython --&gt;
+
+&lt;script&gt;
+window.onload=function(){
+// 設定 data/py 為共用程式路徑
+brython({debug:1, pythonpath:['./../data/py']});
+}
+&lt;/script&gt;
+
+&lt;canvas id="onegear" width="800" height="600"&gt;&lt;/canvas&gt;
+
+&lt;div id="onegear_div" width="800" height="20"&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;input id="n1" value="13"&gt;&lt;/input&gt;&lt;br /&gt;
+&lt;input id="n2" value="11"&gt;&lt;/input&gt;&lt;br /&gt;
+&lt;input id="n3" value="17"&gt;&lt;/input&gt;&lt;br /&gt;
+&lt;button id="button"&gt;Set Number of Gears&lt;/button&gt;&lt;/p&gt;
+
+&lt;script type="text/python3"&gt;
+from browser import document as doc
+from browser import html
+import math
+# deg 為角度轉為徑度的轉換因子
+deg = math.pi/180.
+# 定義 Spur 類別
+class Spur(object):
+    def __init__(self, ctx):
+        self.ctx = ctx
+
+    def create_line(self, x1, y1, x2, y2, width=3, fill="red"):
+        self.ctx.beginPath()
+        self.ctx.lineWidth = width
+        self.ctx.moveTo(x1, y1)
+        self.ctx.lineTo(x2, y2)
+        self.ctx.strokeStyle = fill
+        self.ctx.stroke()
+    #
+    # 定義一個繪正齒輪的繪圖函式
+    # midx 為齒輪圓心 x 座標
+    # midy 為齒輪圓心 y 座標
+    # rp 為節圓半徑, n 為齒數
+    # pa 為壓力角 (deg)
+    # 已經針對 n 大於等於 52 齒時的繪圖錯誤修正, 因為 base circle 與齒根圓大小必須進行判斷
+    def Gear(self, midx, midy, rp, n=20, pa=20, color="black"):
+        # 齒輪漸開線分成 15 線段繪製
+        imax = 15
+        # 在輸入的畫布上繪製直線, 由圓心到節圓 y 軸頂點畫一直線
+        self.create_line(midx, midy, midx, midy-rp)
+        # 畫出 rp 圓, 畫圓函式尚未定義
+        #create_oval(midx-rp, midy-rp, midx+rp, midy+rp, width=2)
+        # a 為模數 (代表公制中齒的大小), 模數為節圓直徑(稱為節徑)除以齒數
+        # 模數也就是齒冠大小
+        a=2*rp/n
+        # d 為齒根大小, 為模數的 1.157 或 1.25倍, 這裡採 1.25 倍
+        d=2.5*rp/n
+        # ra 為齒輪的外圍半徑
+        ra=rp+a
+        # 畫出 ra 圓, 畫圓函式尚未定義
+        #create_oval(midx-ra, midy-ra, midx+ra, midy+ra, width=1)
+        # rb 則為齒輪的基圓半徑
+        # 基圓為漸開線長齒之基準圓
+        rb=rp*math.cos(pa*deg)
+        # 畫出 rb 圓 (基圓), 畫圓函式尚未定義
+        #create_oval(midx-rb, midy-rb, midx+rb, midy+rb, width=1)
+        # rd 為齒根圓半徑
+        rd=rp-d
+        # 當 rd 大於 rb 時, 漸開線並非畫至 rb, 而是 rd
+        # 畫出 rd 圓 (齒根圓), 畫圓函式尚未定義
+        #create_oval(midx-rd, midy-rd, midx+rd, midy+rd, width=1)
+        # dr 則為基圓到齒頂圓半徑分成 imax 段後的每段半徑增量大小
+        # 將圓弧分成 imax 段來繪製漸開線
+        # 當 rd 大於 rb 時, 漸開線並非畫至 rb, 而是 rd
+        if rd&gt;rb:
+            dr = (ra-rd)/imax
+        else:
+            dr=(ra-rb)/imax
+        # tan(pa*deg)-pa*deg 為漸開線函數
+        sigma=math.pi/(2*n)+math.tan(pa*deg)-pa*deg
+        for j in range(n):
+            ang=-2.*j*math.pi/n+sigma
+            ang2=2.*j*math.pi/n+sigma
+            lxd=midx+rd*math.sin(ang2-2.*math.pi/n)
+            lyd=midy-rd*math.cos(ang2-2.*math.pi/n)
+            for i in range(imax+1):
+                # 當 rd 大於 rb 時, 漸開線並非畫至 rb, 而是 rd
+                if rd&gt;rb:
+                    r=rd+i*dr
+                else:
+                    r=rb+i*dr
+                theta=math.sqrt((r*r)/(rb*rb)-1.)
+                alpha=theta-math.atan(theta)
+                xpt=r*math.sin(alpha-ang)
+                ypt=r*math.cos(alpha-ang)
+                xd=rd*math.sin(-ang)
+                yd=rd*math.cos(-ang)
+                # i=0 時, 繪線起點由齒根圓上的點, 作為起點
+                if(i==0):
+                    last_x = midx+xd
+                    last_y = midy-yd
+                # 由左側齒根圓作為起點, 除第一點 (xd,yd) 齒根圓上的起點外, 其餘的 (xpt,ypt)則為漸開線上的分段點
+                self.create_line((midx+xpt),(midy-ypt),(last_x),(last_y),fill=color)
+                # 最後一點, 則為齒頂圓
+                if(i==imax):
+                    lfx=midx+xpt
+                    lfy=midy-ypt
+                last_x = midx+xpt
+                last_y = midy-ypt
+            # the line from last end of dedendum point to the recent
+            # end of dedendum point
+            # lxd 為齒根圓上的左側 x 座標, lyd 則為 y 座標
+            # 下列為齒根圓上用來近似圓弧的直線
+            self.create_line((lxd),(lyd),(midx+xd),(midy-yd),fill=color)
+            for i in range(imax+1):
+                # 當 rd 大於 rb 時, 漸開線並非畫至 rb, 而是 rd
+                if rd&gt;rb:
+                    r=rd+i*dr
+                else:
+                    r=rb+i*dr
+                theta=math.sqrt((r*r)/(rb*rb)-1.)
+                alpha=theta-math.atan(theta)
+                xpt=r*math.sin(ang2-alpha)
+                ypt=r*math.cos(ang2-alpha)
+                xd=rd*math.sin(ang2)
+                yd=rd*math.cos(ang2)
+                # i=0 時, 繪線起點由齒根圓上的點, 作為起點
+                if(i==0):
+                    last_x = midx+xd
+                    last_y = midy-yd
+                # 由右側齒根圓作為起點, 除第一點 (xd,yd) 齒根圓上的起點外, 其餘的 (xpt,ypt)則為漸開線上的分段點
+                self.create_line((midx+xpt),(midy-ypt),(last_x),(last_y),fill=color)
+                # 最後一點, 則為齒頂圓
+                if(i==imax):
+                    rfx=midx+xpt
+                    rfy=midy-ypt
+                last_x = midx+xpt
+                last_y = midy-ypt
+            # lfx 為齒頂圓上的左側 x 座標, lfy 則為 y 座標
+            # 下列為齒頂圓上用來近似圓弧的直線
+            self.create_line(lfx,lfy,rfx,rfy,fill=color)
+
+canvas = doc['onegear']
+ctx = canvas.getContext("2d")
+
+# 以 button 驅動的事件函式
+def setgearnumber(e):
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    x = (canvas.width)/2
+    y = (canvas.height)/2
+    if doc["n1"].value.isdigit():
+        n17 = int(doc["n1"].value)
+    else:
+        n17 = 17
+
+    if doc["n2"].value.isdigit():
+        n11 = int(doc["n2"].value)
+    else:
+        n11 = 11
+
+    if doc["n3"].value.isdigit():
+        n13 = int(doc["n3"].value)
+    else:
+        n13 = 13
+
+    # 只使用畫布高度的 80%
+    canvas_size = canvas.height*0.4
+    r17 = canvas_size*n17/(n17+n11+n13)
+    r11 = canvas_size*n11/(n17+n11+n13)
+    r13 = canvas_size*n13/(n17+n11+n13)
+    # 計算各齒輪中心座標
+    x17 = x - r17-r11
+    y17 = y
+
+    x11 = x 
+    y11 = y
+
+    x13 = x + r11+r13
+    y13 = y
+
+    pa = 20
+    # 開始繪製齒輪
+    # 儲存原有的座標系統
+    ctx.save()
+    # 平移到齒輪圓心
+    ctx.translate(x17, y17)
+    # 以齒輪圓心旋轉 90 度, 讓紅色標線在齒輪右側保持水平
+    ctx.rotate(90*deg)
+    # 平移回原來的座標原點
+    ctx.translate(-x17, -y17)
+    gear17 = Spur(ctx).Gear(x17, y17, r17, n17, pa, "blue")
+    # 回復原有的座標系統
+    ctx.restore()
+
+    ctx.save()
+    ctx.translate(x11, y11)
+    # 中間齒輪轉動 -90 度加上一齒, 可以與左側齒輪囓合
+    ctx.rotate(-90*deg-math.pi/n11)
+    ctx.translate(-x11, -y11)
+    gear11 = Spur(ctx).Gear(x11, y11, r11, n11, pa, "blue")
+    ctx.restore()
+
+    ctx.save()
+    ctx.translate(x13, y13)
+    # 右側齒輪轉動 -90 度加上一齒, 可以與原來標線在左側水平的中間齒輪囓合, 但是目前中間齒輪的標線已經轉了 180 度加或減一次
+    # 必須配合兩齒的速比轉換旋轉角, 以便讓中間齒輪與右側齒輪囓合
+    ctx.rotate(-90*deg-math.pi/n13+(180*deg+math.pi/n11)*n11/n13)
+    ctx.translate(-x13, -y13)
+    gear13 = Spur(ctx).Gear(x13, y13, r13, n13, pa, "blue")
+    ctx.restore()
+
+setgearnumber(True)
+
+'''
+div = doc["onegear_div"]
+form = html.FORM()
+input1 = html.INPUT(type="text", id="n1", name="n1", value="13")
+input2 = html.INPUT(type="text", id="n2", name="n2", value="11")
+input3 = html.INPUT(type="text", id="n3", name="n3", value="19")
+div &lt;= input1 + html.BR() + input2 + html.BR() + input3
+'''
+doc['button'].bind('click',setgearnumber)
+&lt;/script&gt;</content><category term="Brython"></category></entry><entry><title>網路線製作以及配置</title><link href="./wang-lu-xian-zhi-zuo-yi-ji-pei-zhi.html" rel="alternate"></link><published>2017-06-28T12:00:00+08:00</published><updated>2017-06-28T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:None,2017-06-28:./wang-lu-xian-zhi-zuo-yi-ji-pei-zhi.html</id><summary type="html">&lt;!-- 導入 Brython 標準程式庫 --&gt;
+
+&lt;script type="text/javascript" 
+    src="https://cdn.rawgit.com/brython-dev/brython/master/www/src/brython_dist.js"&gt;
+&lt;/script&gt;
+
+&lt;!-- 啟動 Brython --&gt;
+
+&lt;script&gt;
+window.onload=function(){
+// 設定 data/py 為共用程式路徑
+brython({debug:1, pythonpath:['./../data/py']});
+}
+&lt;/script&gt;
+
+&lt;canvas id="onegear" width="800" height="600"&gt;&lt;/canvas&gt;
+
+&lt;div id="onegear_div" width="800" height="20"&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;input id="n1" value="13"&gt;&lt;/input&gt;&lt;br /&gt;
+&lt;input id="n2" value="11"&gt;&lt;/input&gt;&lt;br /&gt;
+&lt;input id="n3" value="17"&gt;&lt;/input&gt;&lt;br /&gt;
+&lt;button id="button"&gt;Set Number of Gears&lt;/button&gt;&lt;/p&gt;
+
+&lt;script type="text/python3"&gt;
+from browser import document as doc
+from browser import html
+import math
+# deg 為角度轉為徑度的轉換因子
+deg = math.pi/180.
+# 定義 Spur 類別
+class Spur(object):
+    def __init__(self, ctx):
+        self.ctx = ctx
+
+    def create_line …&lt;/script&gt;</summary><content type="html">&lt;!-- 導入 Brython 標準程式庫 --&gt;
+
+&lt;script type="text/javascript" 
+    src="https://cdn.rawgit.com/brython-dev/brython/master/www/src/brython_dist.js"&gt;
+&lt;/script&gt;
+
+&lt;!-- 啟動 Brython --&gt;
+
+&lt;script&gt;
+window.onload=function(){
+// 設定 data/py 為共用程式路徑
+brython({debug:1, pythonpath:['./../data/py']});
+}
+&lt;/script&gt;
+
+&lt;canvas id="onegear" width="800" height="600"&gt;&lt;/canvas&gt;
+
+&lt;div id="onegear_div" width="800" height="20"&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;input id="n1" value="13"&gt;&lt;/input&gt;&lt;br /&gt;
+&lt;input id="n2" value="11"&gt;&lt;/input&gt;&lt;br /&gt;
+&lt;input id="n3" value="17"&gt;&lt;/input&gt;&lt;br /&gt;
+&lt;button id="button"&gt;Set Number of Gears&lt;/button&gt;&lt;/p&gt;
+
+&lt;script type="text/python3"&gt;
+from browser import document as doc
+from browser import html
+import math
+# deg 為角度轉為徑度的轉換因子
+deg = math.pi/180.
+# 定義 Spur 類別
+class Spur(object):
+    def __init__(self, ctx):
+        self.ctx = ctx
+
+    def create_line(self, x1, y1, x2, y2, width=3, fill="red"):
+        self.ctx.beginPath()
+        self.ctx.lineWidth = width
+        self.ctx.moveTo(x1, y1)
+        self.ctx.lineTo(x2, y2)
+        self.ctx.strokeStyle = fill
+        self.ctx.stroke()
+    #
+    # 定義一個繪正齒輪的繪圖函式
+    # midx 為齒輪圓心 x 座標
+    # midy 為齒輪圓心 y 座標
+    # rp 為節圓半徑, n 為齒數
+    # pa 為壓力角 (deg)
+    # 已經針對 n 大於等於 52 齒時的繪圖錯誤修正, 因為 base circle 與齒根圓大小必須進行判斷
+    def Gear(self, midx, midy, rp, n=20, pa=20, color="black"):
+        # 齒輪漸開線分成 15 線段繪製
+        imax = 15
+        # 在輸入的畫布上繪製直線, 由圓心到節圓 y 軸頂點畫一直線
+        self.create_line(midx, midy, midx, midy-rp)
+        # 畫出 rp 圓, 畫圓函式尚未定義
+        #create_oval(midx-rp, midy-rp, midx+rp, midy+rp, width=2)
+        # a 為模數 (代表公制中齒的大小), 模數為節圓直徑(稱為節徑)除以齒數
+        # 模數也就是齒冠大小
+        a=2*rp/n
+        # d 為齒根大小, 為模數的 1.157 或 1.25倍, 這裡採 1.25 倍
+        d=2.5*rp/n
+        # ra 為齒輪的外圍半徑
+        ra=rp+a
+        # 畫出 ra 圓, 畫圓函式尚未定義
+        #create_oval(midx-ra, midy-ra, midx+ra, midy+ra, width=1)
+        # rb 則為齒輪的基圓半徑
+        # 基圓為漸開線長齒之基準圓
+        rb=rp*math.cos(pa*deg)
+        # 畫出 rb 圓 (基圓), 畫圓函式尚未定義
+        #create_oval(midx-rb, midy-rb, midx+rb, midy+rb, width=1)
+        # rd 為齒根圓半徑
+        rd=rp-d
+        # 當 rd 大於 rb 時, 漸開線並非畫至 rb, 而是 rd
+        # 畫出 rd 圓 (齒根圓), 畫圓函式尚未定義
+        #create_oval(midx-rd, midy-rd, midx+rd, midy+rd, width=1)
+        # dr 則為基圓到齒頂圓半徑分成 imax 段後的每段半徑增量大小
+        # 將圓弧分成 imax 段來繪製漸開線
+        # 當 rd 大於 rb 時, 漸開線並非畫至 rb, 而是 rd
+        if rd&gt;rb:
+            dr = (ra-rd)/imax
+        else:
+            dr=(ra-rb)/imax
+        # tan(pa*deg)-pa*deg 為漸開線函數
+        sigma=math.pi/(2*n)+math.tan(pa*deg)-pa*deg
+        for j in range(n):
+            ang=-2.*j*math.pi/n+sigma
+            ang2=2.*j*math.pi/n+sigma
+            lxd=midx+rd*math.sin(ang2-2.*math.pi/n)
+            lyd=midy-rd*math.cos(ang2-2.*math.pi/n)
+            for i in range(imax+1):
+                # 當 rd 大於 rb 時, 漸開線並非畫至 rb, 而是 rd
+                if rd&gt;rb:
+                    r=rd+i*dr
+                else:
+                    r=rb+i*dr
+                theta=math.sqrt((r*r)/(rb*rb)-1.)
+                alpha=theta-math.atan(theta)
+                xpt=r*math.sin(alpha-ang)
+                ypt=r*math.cos(alpha-ang)
+                xd=rd*math.sin(-ang)
+                yd=rd*math.cos(-ang)
+                # i=0 時, 繪線起點由齒根圓上的點, 作為起點
+                if(i==0):
+                    last_x = midx+xd
+                    last_y = midy-yd
+                # 由左側齒根圓作為起點, 除第一點 (xd,yd) 齒根圓上的起點外, 其餘的 (xpt,ypt)則為漸開線上的分段點
+                self.create_line((midx+xpt),(midy-ypt),(last_x),(last_y),fill=color)
+                # 最後一點, 則為齒頂圓
+                if(i==imax):
+                    lfx=midx+xpt
+                    lfy=midy-ypt
+                last_x = midx+xpt
+                last_y = midy-ypt
+            # the line from last end of dedendum point to the recent
+            # end of dedendum point
+            # lxd 為齒根圓上的左側 x 座標, lyd 則為 y 座標
+            # 下列為齒根圓上用來近似圓弧的直線
+            self.create_line((lxd),(lyd),(midx+xd),(midy-yd),fill=color)
+            for i in range(imax+1):
+                # 當 rd 大於 rb 時, 漸開線並非畫至 rb, 而是 rd
+                if rd&gt;rb:
+                    r=rd+i*dr
+                else:
+                    r=rb+i*dr
+                theta=math.sqrt((r*r)/(rb*rb)-1.)
+                alpha=theta-math.atan(theta)
+                xpt=r*math.sin(ang2-alpha)
+                ypt=r*math.cos(ang2-alpha)
+                xd=rd*math.sin(ang2)
+                yd=rd*math.cos(ang2)
+                # i=0 時, 繪線起點由齒根圓上的點, 作為起點
+                if(i==0):
+                    last_x = midx+xd
+                    last_y = midy-yd
+                # 由右側齒根圓作為起點, 除第一點 (xd,yd) 齒根圓上的起點外, 其餘的 (xpt,ypt)則為漸開線上的分段點
+                self.create_line((midx+xpt),(midy-ypt),(last_x),(last_y),fill=color)
+                # 最後一點, 則為齒頂圓
+                if(i==imax):
+                    rfx=midx+xpt
+                    rfy=midy-ypt
+                last_x = midx+xpt
+                last_y = midy-ypt
+            # lfx 為齒頂圓上的左側 x 座標, lfy 則為 y 座標
+            # 下列為齒頂圓上用來近似圓弧的直線
+            self.create_line(lfx,lfy,rfx,rfy,fill=color)
+
+canvas = doc['onegear']
+ctx = canvas.getContext("2d")
+
+# 以 button 驅動的事件函式
+def setgearnumber(e):
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    x = (canvas.width)/2
+    y = (canvas.height)/2
+    if doc["n1"].value.isdigit():
+        n17 = int(doc["n1"].value)
+    else:
+        n17 = 17
+
+    if doc["n2"].value.isdigit():
+        n11 = int(doc["n2"].value)
+    else:
+        n11 = 11
+
+    if doc["n3"].value.isdigit():
+        n13 = int(doc["n3"].value)
+    else:
+        n13 = 13
+
+    # 只使用畫布高度的 80%
+    canvas_size = canvas.height*0.4
+    r17 = canvas_size*n17/(n17+n11+n13)
+    r11 = canvas_size*n11/(n17+n11+n13)
+    r13 = canvas_size*n13/(n17+n11+n13)
+    # 計算各齒輪中心座標
+    x17 = x - r17-r11
+    y17 = y
+
+    x11 = x 
+    y11 = y
+
+    x13 = x + r11+r13
+    y13 = y
+
+    pa = 20
+    # 開始繪製齒輪
+    # 儲存原有的座標系統
+    ctx.save()
+    # 平移到齒輪圓心
+    ctx.translate(x17, y17)
+    # 以齒輪圓心旋轉 90 度, 讓紅色標線在齒輪右側保持水平
+    ctx.rotate(90*deg)
+    # 平移回原來的座標原點
+    ctx.translate(-x17, -y17)
+    gear17 = Spur(ctx).Gear(x17, y17, r17, n17, pa, "blue")
+    # 回復原有的座標系統
+    ctx.restore()
+
+    ctx.save()
+    ctx.translate(x11, y11)
+    # 中間齒輪轉動 -90 度加上一齒, 可以與左側齒輪囓合
+    ctx.rotate(-90*deg-math.pi/n11)
+    ctx.translate(-x11, -y11)
+    gear11 = Spur(ctx).Gear(x11, y11, r11, n11, pa, "blue")
+    ctx.restore()
+
+    ctx.save()
+    ctx.translate(x13, y13)
+    # 右側齒輪轉動 -90 度加上一齒, 可以與原來標線在左側水平的中間齒輪囓合, 但是目前中間齒輪的標線已經轉了 180 度加或減一次
+    # 必須配合兩齒的速比轉換旋轉角, 以便讓中間齒輪與右側齒輪囓合
+    ctx.rotate(-90*deg-math.pi/n13+(180*deg+math.pi/n11)*n11/n13)
+    ctx.translate(-x13, -y13)
+    gear13 = Spur(ctx).Gear(x13, y13, r13, n13, pa, "blue")
+    ctx.restore()
+
+setgearnumber(True)
+
+'''
+div = doc["onegear_div"]
+form = html.FORM()
+input1 = html.INPUT(type="text", id="n1", name="n1", value="13")
+input2 = html.INPUT(type="text", id="n2", name="n2", value="11")
+input3 = html.INPUT(type="text", id="n3", name="n3", value="19")
+div &lt;= input1 + html.BR() + input2 + html.BR() + input3
+'''
+doc['button'].bind('click',setgearnumber)
+&lt;/script&gt;</content><category term="Brython"></category></entry><entry><title>Fossil SCM的推送</title><link href="./fossil-scmde-tui-song.html" rel="alternate"></link><published>2017-06-27T12:00:00+08:00</published><updated>2017-06-27T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:None,2017-06-27:./fossil-scmde-tui-song.html</id><summary type="html">&lt;p&gt;利用 Fossil SCM 管理 mp4 影片檔案的步驟
 1.fossil clone https://帳號@網址 ................. 下載網站內容並附加帳號資訊 
 2.打密碼並記住密碼
 3.mkdir 資料夾名................. 創一個新資料夾
@@ -12,7 +529,15 @@
 5.fossil open ./../fossil檔 ................. 開啟上一個資料夾的fossil檔
 6.將要上傳的東西複製進新創的資料夾
 7.fossil add .................. 加入所有改變
-8.fossil commit -m "留言" ................. 提交並附帶留言&lt;/p&gt;</summary><category term="Brython"></category></entry><entry><title>IPv6環境設定</title><link href="./ipv6huan-jing-she-ding.html" rel="alternate"></link><published>2017-06-26T12:00:00+08:00</published><updated>2017-06-26T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:,2017-06-26:./ipv6huan-jing-she-ding.html</id><summary type="html">&lt;h1&gt;設定Ipv6環境&lt;/h1&gt;
+8.fossil commit -m "留言" ................. 提交並附帶留言&lt;/p&gt;</summary><content type="html">&lt;p&gt;利用 Fossil SCM 管理 mp4 影片檔案的步驟
+1.fossil clone https://帳號@網址 ................. 下載網站內容並附加帳號資訊 
+2.打密碼並記住密碼
+3.mkdir 資料夾名................. 創一個新資料夾
+4.cd 資料夾名................. 進入資料夾
+5.fossil open ./../fossil檔 ................. 開啟上一個資料夾的fossil檔
+6.將要上傳的東西複製進新創的資料夾
+7.fossil add .................. 加入所有改變
+8.fossil commit -m "留言" ................. 提交並附帶留言&lt;/p&gt;</content><category term="Brython"></category></entry><entry><title>IPv6環境設定</title><link href="./ipv6huan-jing-she-ding.html" rel="alternate"></link><published>2017-06-26T12:00:00+08:00</published><updated>2017-06-26T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:None,2017-06-26:./ipv6huan-jing-she-ding.html</id><summary type="html">&lt;h1&gt;設定Ipv6環境&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;開啟網路介面卡--&amp;gt;進入內容--&amp;gt;開啟Ipv6--&amp;gt;點選Ipv6內容--&amp;gt;輸入DNS伺服器位置&lt;/li&gt;
 &lt;li&gt;慣用DNS: [2001:288:6004:1:2] (本校)&lt;/li&gt;
@@ -22,7 +547,26 @@
 &lt;ul&gt;
 &lt;li&gt;address: [2001:288:6004:17::17] &lt;/li&gt;
 &lt;li&gt;Port: 3128&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="Brython"></category></entry><entry><title>Ubuntu中啟動stunnel和fossil</title><link href="./ubuntuzhong-qi-dong-stunnelhe-fossil.html" rel="alternate"></link><published>2017-06-25T12:00:00+08:00</published><updated>2017-06-25T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:,2017-06-25:./ubuntuzhong-qi-dong-stunnelhe-fossil.html</id><summary type="html">&lt;p&gt;stunnel和fossil的安裝&lt;/p&gt;
+&lt;/ul&gt;</summary><content type="html">&lt;h1&gt;設定Ipv6環境&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;開啟網路介面卡--&amp;gt;進入內容--&amp;gt;開啟Ipv6--&amp;gt;點選Ipv6內容--&amp;gt;輸入DNS伺服器位置&lt;/li&gt;
+&lt;li&gt;慣用DNS: [2001:288:6004:1:2] (本校)&lt;/li&gt;
+&lt;li&gt;其他DNS:[2001:b000:168:1] (中華電信)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Ipv6 的 Proxy 設定&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;address: [2001:288:6004:17::17] &lt;/li&gt;
+&lt;li&gt;Port: 3128&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Brython"></category></entry><entry><title>Ubuntu中啟動stunnel和fossil</title><link href="./ubuntuzhong-qi-dong-stunnelhe-fossil.html" rel="alternate"></link><published>2017-06-25T12:00:00+08:00</published><updated>2017-06-25T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:None,2017-06-25:./ubuntuzhong-qi-dong-stunnelhe-fossil.html</id><summary type="html">&lt;p&gt;stunnel和fossil的安裝&lt;/p&gt;
+&lt;p&gt;1.sudo apt update 更新&lt;/p&gt;
+&lt;p&gt;2.sudo apt install stunnel4 -y 安裝stunnel14&lt;/p&gt;
+&lt;p&gt;3.sudo apt install fossil 安裝fossil&lt;/p&gt;
+&lt;p&gt;啟動設定:&lt;/p&gt;
+&lt;p&gt;進入/etc/environment中 改HTTPS=on&lt;/p&gt;
+&lt;p&gt;進入/etc/default/stunnel4中 改ENABLED=1&lt;/p&gt;
+&lt;p&gt;stunnel設定和fossil:&lt;/p&gt;
+&lt;p&gt;stunnel.conf&lt;/p&gt;
+&lt;p&gt;sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt …&lt;/p&gt;</summary><content type="html">&lt;p&gt;stunnel和fossil的安裝&lt;/p&gt;
 &lt;p&gt;1.sudo apt update 更新&lt;/p&gt;
 &lt;p&gt;2.sudo apt install stunnel4 -y 安裝stunnel14&lt;/p&gt;
 &lt;p&gt;3.sudo apt install fossil 安裝fossil&lt;/p&gt;
@@ -37,7 +581,7 @@
 &lt;p&gt;--nojail 目的在 drop the root privilege but do not enter the chroot jail&lt;/p&gt;
 &lt;p&gt;重新啟動 stunnel4 則使用 /etc/init.d/stunnel4 restart&lt;/p&gt;
 &lt;p&gt;設定完成後, 重新開機即可以 https://yourip 連結至自己組別的主機
-不過以上我有很多指令都看不懂...只能硬記&lt;/p&gt;</summary><category term="Brython"></category></entry><entry><title>電腦拆解以及重新組裝(合體)</title><link href="./dian-nao-chai-jie-yi-ji-zhong-xin-zu-zhuang-he-ti.html" rel="alternate"></link><published>2017-06-24T12:00:00+08:00</published><updated>2017-06-24T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:,2017-06-24:./dian-nao-chai-jie-yi-ji-zhong-xin-zu-zhuang-he-ti.html</id><summary type="html">&lt;h1&gt;目的是為了使小組一起建立實體主機的伺服器&lt;/h1&gt;
+不過以上我有很多指令都看不懂...只能硬記&lt;/p&gt;</content><category term="Brython"></category></entry><entry><title>電腦拆解以及重新組裝(合體)</title><link href="./dian-nao-chai-jie-yi-ji-zhong-xin-zu-zhuang-he-ti.html" rel="alternate"></link><published>2017-06-24T12:00:00+08:00</published><updated>2017-06-24T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:None,2017-06-24:./dian-nao-chai-jie-yi-ji-zhong-xin-zu-zhuang-he-ti.html</id><summary type="html">&lt;h1&gt;目的是為了使小組一起建立實體主機的伺服器&lt;/h1&gt;
 &lt;h2&gt;我們使設計系即將淘汰的兩台電腦合為一體，使他能續航，並能使其成為更加強大的電腦，得以用來建立順暢的伺服器 。&lt;/h2&gt;
 &lt;h2&gt;首先，我們把一台電腦機殼側蓋開啟。拔出還原卡、RAM以及硬碟。並裝在另一台電腦上，這樣就完成兩台電腦的升級以及淘汰了&lt;/h2&gt;
 &lt;h1&gt;比較差異HDD vs SSD&lt;/h1&gt;
@@ -45,7 +589,27 @@
 &lt;h2&gt;價格 HDD(較便宜) vs SSD&lt;/h2&gt;
 &lt;h2&gt;功耗 HDD vs SSD(較低)&lt;/h2&gt;
 &lt;h2&gt;噪音 HDD vs SSD(安靜)&lt;/h2&gt;
-&lt;h2&gt;檔案救援 HDD(可以) vs SSD(無法)&lt;/h2&gt;</summary><category term="Brython"></category></entry><entry><title>在Ubuntu 16.04 環境下啟動 Stunnel 與 Fossil SCM</title><link href="./zai-ubuntu-1604-huan-jing-xia-qi-dong-stunnel-yu-fossil-scm.html" rel="alternate"></link><published>2017-04-27T12:00:00+08:00</published><updated>2017-04-27T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:,2017-04-27:./zai-ubuntu-1604-huan-jing-xia-qi-dong-stunnel-yu-fossil-scm.html</id><summary type="html">&lt;p&gt;練習如何在 Ubuntu 操作系統中, 安裝並設定 Stunnel 後與 Fossil SCM server 結合啟動。&lt;/p&gt;
+&lt;h2&gt;檔案救援 HDD(可以) vs SSD(無法)&lt;/h2&gt;</summary><content type="html">&lt;h1&gt;目的是為了使小組一起建立實體主機的伺服器&lt;/h1&gt;
+&lt;h2&gt;我們使設計系即將淘汰的兩台電腦合為一體，使他能續航，並能使其成為更加強大的電腦，得以用來建立順暢的伺服器 。&lt;/h2&gt;
+&lt;h2&gt;首先，我們把一台電腦機殼側蓋開啟。拔出還原卡、RAM以及硬碟。並裝在另一台電腦上，這樣就完成兩台電腦的升級以及淘汰了&lt;/h2&gt;
+&lt;h1&gt;比較差異HDD vs SSD&lt;/h1&gt;
+&lt;h2&gt;讀取速度 HDD vs SSD(勝)&lt;/h2&gt;
+&lt;h2&gt;價格 HDD(較便宜) vs SSD&lt;/h2&gt;
+&lt;h2&gt;功耗 HDD vs SSD(較低)&lt;/h2&gt;
+&lt;h2&gt;噪音 HDD vs SSD(安靜)&lt;/h2&gt;
+&lt;h2&gt;檔案救援 HDD(可以) vs SSD(無法)&lt;/h2&gt;</content><category term="Brython"></category></entry><entry><title>在Ubuntu 16.04 環境下啟動 Stunnel 與 Fossil SCM</title><link href="./zai-ubuntu-1604-huan-jing-xia-qi-dong-stunnel-yu-fossil-scm.html" rel="alternate"></link><published>2017-04-27T12:00:00+08:00</published><updated>2017-04-27T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:None,2017-04-27:./zai-ubuntu-1604-huan-jing-xia-qi-dong-stunnel-yu-fossil-scm.html</id><summary type="html">&lt;p&gt;練習如何在 Ubuntu 操作系統中, 安裝並設定 Stunnel 後與 Fossil SCM server 結合啟動。&lt;/p&gt;
+&lt;p&gt;首先，開啟終端機(terminal)&lt;/p&gt;
+&lt;p&gt;開始安裝Stunnel 與 Fossil SCM：&lt;/p&gt;
+&lt;p&gt;sudo apt update&lt;/p&gt;
+&lt;p&gt;sudo apt install stunnel4 -y&lt;/p&gt;
+&lt;p&gt;sudo apt install fossil&lt;/p&gt;
+&lt;p&gt;輸入完畢後，接下來需要更改某些資料夾目錄中的環境變數及做開機啟動設定。&lt;/p&gt;
+&lt;p&gt;sudo vi /etc/environment&lt;/p&gt;
+&lt;p&gt;其中vi代表進入目錄並更改或設定其內容。&lt;/p&gt;
+&lt;p&gt;進入後按下o，即進入編寫模式及換到下一行，輸入：&lt;/p&gt;
+&lt;p&gt;HTTPS=on&lt;/p&gt;
+&lt;p&gt;接著按下esc鍵，輸入:wq，其中w代表編寫(write)、 q代表離開(quit)。&lt;/p&gt;
+&lt;p&gt;sudo vi …&lt;/p&gt;</summary><content type="html">&lt;p&gt;練習如何在 Ubuntu 操作系統中, 安裝並設定 Stunnel 後與 Fossil SCM server 結合啟動。&lt;/p&gt;
 &lt;p&gt;首先，開啟終端機(terminal)&lt;/p&gt;
 &lt;p&gt;開始安裝Stunnel 與 Fossil SCM：&lt;/p&gt;
 &lt;p&gt;sudo apt update&lt;/p&gt;
@@ -71,7 +635,7 @@
 &lt;p&gt;進入後，將下列資料輸入：&lt;/p&gt;
 &lt;p&gt;[https] accept = 此電腦的IPv4ip:443 accept = :::443(此為IPv6，若無需使用可直接跳過不打) cert = /etc/stunnel/localhost.crt key = /etc/stunnel/localhost.key exec = /usr/bin/fossil execargs = /usr/bin/fossil http /home/user/repository/自己的小組.fossil -- https --nojail&lt;/p&gt;
 &lt;p&gt;其中 --nojail 目的在 drop the root privilege but do not enter the chroot jail&lt;/p&gt;
-&lt;p&gt;最後輸入sudo /etc/init.d/stunnel4 restart後，重新開機虛擬機即可以https: //yourip 連結至 mde2a1.fossil 網際管理介面&lt;/p&gt;</summary><category term="Brython"></category></entry><entry><title>在Ubuntu16.04中安裝nginx及設定網路</title><link href="./zai-ubuntu1604zhong-an-zhuang-nginxji-she-ding-wang-lu.html" rel="alternate"></link><published>2017-04-26T12:00:00+08:00</published><updated>2017-04-26T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:,2017-04-26:./zai-ubuntu1604zhong-an-zhuang-nginxji-she-ding-wang-lu.html</id><summary type="html">&lt;p&gt;上一步驟完成安裝Ubuntu後，再來需要把網路設定好，才能上網。&lt;/p&gt;
+&lt;p&gt;最後輸入sudo /etc/init.d/stunnel4 restart後，重新開機虛擬機即可以https: //yourip 連結至 mde2a1.fossil 網際管理介面&lt;/p&gt;</content><category term="Brython"></category></entry><entry><title>在Ubuntu16.04中安裝nginx及設定網路</title><link href="./zai-ubuntu1604zhong-an-zhuang-nginxji-she-ding-wang-lu.html" rel="alternate"></link><published>2017-04-26T12:00:00+08:00</published><updated>2017-04-26T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:None,2017-04-26:./zai-ubuntu1604zhong-an-zhuang-nginxji-she-ding-wang-lu.html</id><summary type="html">&lt;p&gt;上一步驟完成安裝Ubuntu後，再來需要把網路設定好，才能上網。&lt;/p&gt;
 &lt;p&gt;點擊齒輪後選擇網路，再選擇右下角的選項，將自己的網路IP等資料輸入後，按下儲存，即可利用瀏覽器上網。&lt;/p&gt;
 &lt;p&gt;接著練習的是安裝nginx軟件&lt;/p&gt;
 &lt;p&gt;開啟終端機(terminal)後，輸入：&lt;/p&gt;
@@ -81,7 +645,17 @@
 &lt;p&gt;也可以觀看練習影片：&lt;/p&gt;
 &lt;iframe src="https://player.vimeo.com/video/215014968" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
 
-&lt;p&gt;&lt;a href="https://vimeo.com/215014968"&gt;在Ubuntu16.04中安裝nginx及設定網路&lt;/a&gt; from &lt;a href="https://vimeo.com/user58922015"&gt;張皓然&lt;/a&gt; on &lt;a href="https://vimeo.com"&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;</summary><category term="Brython"></category></entry><entry><title>在虛擬機中安裝UBUNTU</title><link href="./zai-xu-ni-ji-zhong-an-zhuang-ubuntu.html" rel="alternate"></link><published>2017-04-25T12:00:00+08:00</published><updated>2017-04-25T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:,2017-04-25:./zai-xu-ni-ji-zhong-an-zhuang-ubuntu.html</id><summary type="html">&lt;p&gt;此步驟將練習如何安裝VirtualBox後，啟動虛擬主機並在其內安裝Ubuntu。 首先須準備VirtualBox主程式及Ubuntu安裝映像檔(此處使用桌面版)。 在VirtualBox新增虛擬主機後，必須設定一些需求才能開始啟動，包含了:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://vimeo.com/215014968"&gt;在Ubuntu16.04中安裝nginx及設定網路&lt;/a&gt; from &lt;a href="https://vimeo.com/user58922015"&gt;張皓然&lt;/a&gt; on &lt;a href="https://vimeo.com"&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;</summary><content type="html">&lt;p&gt;上一步驟完成安裝Ubuntu後，再來需要把網路設定好，才能上網。&lt;/p&gt;
+&lt;p&gt;點擊齒輪後選擇網路，再選擇右下角的選項，將自己的網路IP等資料輸入後，按下儲存，即可利用瀏覽器上網。&lt;/p&gt;
+&lt;p&gt;接著練習的是安裝nginx軟件&lt;/p&gt;
+&lt;p&gt;開啟終端機(terminal)後，輸入：&lt;/p&gt;
+&lt;p&gt;sudo apt install nginx&lt;/p&gt;
+&lt;p&gt;service nginx start&lt;/p&gt;
+&lt;p&gt;輸入密碼後再從瀏覽器網址輸入http ://localhost/就會出現wellcome to nginx的字樣。&lt;/p&gt;
+&lt;p&gt;也可以觀看練習影片：&lt;/p&gt;
+&lt;iframe src="https://player.vimeo.com/video/215014968" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;a href="https://vimeo.com/215014968"&gt;在Ubuntu16.04中安裝nginx及設定網路&lt;/a&gt; from &lt;a href="https://vimeo.com/user58922015"&gt;張皓然&lt;/a&gt; on &lt;a href="https://vimeo.com"&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;</content><category term="Brython"></category></entry><entry><title>在虛擬機中安裝UBUNTU</title><link href="./zai-xu-ni-ji-zhong-an-zhuang-ubuntu.html" rel="alternate"></link><published>2017-04-25T12:00:00+08:00</published><updated>2017-04-25T12:00:00+08:00</updated><author><name>Kay</name></author><id>tag:None,2017-04-25:./zai-xu-ni-ji-zhong-an-zhuang-ubuntu.html</id><summary type="html">&lt;p&gt;此步驟將練習如何安裝VirtualBox後，啟動虛擬主機並在其內安裝Ubuntu。 首先須準備VirtualBox主程式及Ubuntu安裝映像檔(此處使用桌面版)。 在VirtualBox新增虛擬主機後，必須設定一些需求才能開始啟動，包含了:&lt;/p&gt;
 &lt;p&gt;1.自訂系統名稱&lt;/p&gt;
 &lt;p&gt;2.類型選擇Linux&lt;/p&gt;
 &lt;p&gt;3.版本選擇Ubuntu64-bit&lt;/p&gt;
@@ -94,4 +668,17 @@
 &lt;p&gt;也可以觀看練習過程影片：&lt;/p&gt;
 &lt;iframe src="https://player.vimeo.com/video/215004584" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
 
-&lt;p&gt;&lt;a href="https://vimeo.com/215004584"&gt;bandicam 2017-04-27 19-52-41-095&lt;/a&gt; from &lt;a href="https://vimeo.com/user58922015"&gt;張皓然&lt;/a&gt; on &lt;a href="https://vimeo.com"&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;</summary><category term="Brython"></category></entry></feed>
+&lt;p&gt;&lt;a href="https://vimeo.com/215004584"&gt;bandicam 2017-04-27 19-52-41-095&lt;/a&gt; from &lt;a href="https://vimeo.com/user58922015"&gt;張皓然 …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;此步驟將練習如何安裝VirtualBox後，啟動虛擬主機並在其內安裝Ubuntu。 首先須準備VirtualBox主程式及Ubuntu安裝映像檔(此處使用桌面版)。 在VirtualBox新增虛擬主機後，必須設定一些需求才能開始啟動，包含了:&lt;/p&gt;
+&lt;p&gt;1.自訂系統名稱&lt;/p&gt;
+&lt;p&gt;2.類型選擇Linux&lt;/p&gt;
+&lt;p&gt;3.版本選擇Ubuntu64-bit&lt;/p&gt;
+&lt;p&gt;4.記憶體大小設定(依照本機來判斷給予多少記憶體)&lt;/p&gt;
+&lt;p&gt;5.硬碟選擇立即建立虛擬硬碟&lt;/p&gt;
+&lt;p&gt;6.設定虛擬機要存放的位置、給予虛擬硬碟多少容量(建議10GB以上最好是20GB)&lt;/p&gt;
+&lt;p&gt;7.硬碟類型選擇VHD(虛擬硬碟)，設定好之後即可建立一個虛擬主機(或稱虛擬電腦)。&lt;/p&gt;
+&lt;p&gt;在建立完成後，需要設定之後內部要使用的網路，不然就沒有網路啦！ 點選左上角的設定值→網路，附加選擇的是橋接介面卡，而MAC位址需判斷自身網路狀況輸入，因為我用的是學校宿舍網路，打上網路的實體位址。完成後點下OK鈕。&lt;/p&gt;
+&lt;p&gt;接下來就可以按下啟動鍵了！啟動後虛擬機會顯示選取啟動的磁碟，這時候拿出一開始準備的Ubuntu，瀏覽選擇後按下啟動，就能在使用Ubuntu的系統下開啟VirtualBox虛擬主機。 接著在設定密碼及安裝一些軟件後，就已經成功安裝完成。&lt;/p&gt;
+&lt;p&gt;也可以觀看練習過程影片：&lt;/p&gt;
+&lt;iframe src="https://player.vimeo.com/video/215004584" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;a href="https://vimeo.com/215004584"&gt;bandicam 2017-04-27 19-52-41-095&lt;/a&gt; from &lt;a href="https://vimeo.com/user58922015"&gt;張皓然&lt;/a&gt; on &lt;a href="https://vimeo.com"&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;</content><category term="Brython"></category></entry></feed>
